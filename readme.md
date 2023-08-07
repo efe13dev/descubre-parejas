@@ -30,10 +30,16 @@ Este proyecto consiste en un emocionante juego de memoria llamado "Descubre Pare
 
 - El objetivo es encontrar todas las parejas con la menor cantidad de intentos posibles.
 
+- Después de voltear dos cartas, se incrementará el contador de intentos en 1. El objetivo consiste en revelar todas las parejas con la menor cantidad de intentos posible.
+
 ## Estructura del Proyecto
 
-- `index.html`: Contiene la estructura principal del juego y la representación de las cartas.
+- `index.html`: Este archivo constituye la base fundamental de la página, donde gran parte del contenido se inserta a través de JavaScript en el respectivo archivo correspondiente.
 
-- `styles.css`: Archivo de estilos que define la apariencia y la animación de las cartas.
+- `css`: Aquí se encuentra el archivo de estilos que define tanto la apariencia como las animaciones de las cartas.
 
-- `script.js`: Archivo JavaScript que contiene la lógica del juego, incluyendo la revelación y ocultamiento de cartas, y el cálculo de los intentos.
+- `js`: La carpeta alberga el archivo principal, denominado main.js, que engloba la mecánica del juego. Esto incluye la acción de revelar y ocultar las cartas, junto con el cálculo de los intentos.
+
+- `fonts`: En este directorio se encuentra la fuente principal utilizada en la aplicación.
+
+- `images`: En este espacio se guardan tanto el fondo utilizado por la aplicación como una captura de pantalla de la interfaz de la app, destinada a ser empleada como vista previa en este mismo Redmi. Ambas imágenes han sido optimizadas para lograr una calidad aceptable sin ocupar más espacio del necesario.
