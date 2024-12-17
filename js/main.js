@@ -89,18 +89,7 @@ const reveal = (e) => {
 
       setTimeout(() => {
         if (par.length === 16) {
-          if (
-            confirm(
-              `Has terminado el juego tu puntuacion es ${contador}, ¿quieres volver a jugar?`
-            )
-          ) {
-            for (const classPar of par) {
-              classPar.classList.remove('par');
-            }
-            contador = 0;
-            spanContador.textContent = contador;
-            spanContador.style.color = 'rgb(0, 164, 57)';
-          }
+          showVictoryModal();
         }
       }, 1000);
     } else {
@@ -116,18 +105,55 @@ const reveal = (e) => {
 for (const card of cards) {
   card.addEventListener('click', reveal);
 }
-resetButton.addEventListener('click', () => {
-  for (const card of cards) {
-    card.classList.remove('flipped');
-    card.classList.remove('par');
-  }
 
-  contador = 0;
-  spanContador.textContent = contador;
-  spanContador.style.color = 'rgb(0, 164, 57)';
-});
 intentos.textContent = `Intentos: `;
 const spanContador = document.createElement('span');
 spanContador.id = 'span-contador';
 spanContador.textContent = contador;
 intentos.appendChild(spanContador);
+
+function showVictoryModal() {
+  const modalHTML = `
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="victory-modal" id="victoryModal">
+      <h2>¡Felicidades!</h2>
+      <p>Has encontrado todas las parejas en ${contador} intentos</p>
+      <button onclick="resetGame()">Jugar de nuevo</button>
+    </div>
+  `;
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+  
+  setTimeout(() => {
+    document.getElementById('modalOverlay').classList.add('show');
+    document.getElementById('victoryModal').classList.add('show');
+  }, 100);
+}
+
+function resetGame() {
+  // Eliminar el modal si existe
+  const modalOverlay = document.getElementById('modalOverlay');
+  const victoryModal = document.getElementById('victoryModal');
+  if (modalOverlay) modalOverlay.remove();
+  if (victoryModal) victoryModal.remove();
+  
+  // Reiniciar el contador y su estilo
+  contador = 0;
+  spanContador.textContent = '0';
+  spanContador.style.color = 'rgb(0, 164, 57)';
+  
+  // Reiniciar las cartas
+  for (const card of cards) {
+    card.classList.remove('flipped');
+    card.classList.remove('par');
+  }
+  
+  // Barajar y regenerar las cartas
+  shuffleEmojis.sort(() => Math.random() - 0.5);
+  generarCard();
+  cards = document.querySelectorAll('.card');
+  for (const card of cards) {
+    card.addEventListener('click', reveal);
+  }
+}
+
+resetButton.addEventListener('click', resetGame);
