@@ -74,9 +74,20 @@ header p {
   padding: 0.8rem;
 }
 header p span {
-  color: rgb(0, 164, 57);
   text-shadow: 2px 2px 3px black;
   margin-left: 0.5rem;
+}
+
+.intentos-base {
+  color: rgb(0, 164, 57);
+}
+
+.intentos-warning {
+  color: orange;
+}
+
+.intentos-danger {
+  color: red;
 }
 
 main {
@@ -91,7 +102,7 @@ main {
   padding: 2vh;
 }
 
-section {
+.card { /* Changed from section to .card */
   border-radius: 10px;
   height: calc((100vh - 320px) / 2);
   width: calc((100vw - 18vw) / 8);
@@ -99,6 +110,17 @@ section {
   align-items: center;
   justify-content: center;
   position: relative;
+  /* Button resets */
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit; /* Inherit font from body */
+  color: inherit; /* Inherit color from body */
+  cursor: pointer; /* Ensure cursor is pointer */
+  -webkit-appearance: none; /* Remove default button styles for Webkit browsers */
+  -moz-appearance: none; /* Remove default button styles for Mozilla browsers */
+  appearance: none; /* Remove default button styles */
 }
 .content {
   display: flex;
@@ -255,7 +277,7 @@ section {
     margin: 0.5rem;
   }
 
-  section {
+  .card { /* Changed from section to .card */
     height: calc((100vh - 280px) / 2);
     width: calc((100vw - 12vw) / 6);
     font-size: calc((100vh - 280px) / 5);
@@ -284,7 +306,7 @@ section {
     margin-right: 1rem;
   }
 
-  section {
+  .card { /* Changed from section to .card */
     height: calc((100vh - 250px) / 3);
     width: calc((100vw - 8vw) / 4);
     font-size: calc((100vh - 250px) / 6);
@@ -314,7 +336,7 @@ section {
     margin-bottom: 2vh;
   }
 
-  section {
+  .card { /* Changed from section to .card */
     height: 140px;
     width: calc((100vw - 6vw) / 3);
     font-size: 70px;
@@ -343,7 +365,7 @@ section {
     margin: 0.3rem;
   }
 
-  section {
+  .card { /* Changed from section to .card */
     height: calc((100vh - 150px) / 2);
     width: calc(((100vw - 150px) / 2) * 0.7);
     font-size: calc((100vh - 150px) / 5);
