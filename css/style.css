@@ -148,6 +148,11 @@ main {
   position: absolute;
 }
 
+.front {
+  font-family: sans-serif;
+  font-size: 2em;
+}
+
 .back {
   border-radius: 10px;
   display: flex;
@@ -158,6 +163,7 @@ main {
   transform: rotateY(180deg);
   background: radial-gradient(#db88db, rgb(245 46 110 / 100%));
   text-shadow: 5px 5px 10px black;
+  font-size: 4em;
 }
 .card.par .content {
   transform: rotateY(180deg);

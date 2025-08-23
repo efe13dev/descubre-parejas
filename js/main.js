@@ -41,6 +41,7 @@ const game = {
     });
 
     this.resetButton.addEventListener('click', () => this.resetGame()); // Use arrow function to preserve 'this'
+    document.getElementById('reset-button-modal').addEventListener('click', () => this.resetGame());
   },
 
   generarCard: function() {
@@ -109,27 +110,14 @@ const game = {
   },
 
   showVictoryModal: function() {
-    const modalHTML = `
-      <div class="modal-overlay" id="modalOverlay"></div>
-      <div class="victory-modal" id="victoryModal">
-        <h2>¡Felicidades!</h2>
-        <p>Has encontrado todas las parejas en ${this.contador} intentos</p>
-        <button onclick="game.resetGame()">Jugar de nuevo</button> // Call through game object
-      </div>
-    `;
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
-    
-    setTimeout(() => {
-      document.getElementById('modalOverlay').classList.add('show');
-      document.getElementById('victoryModal').classList.add('show');
-    }, 100);
+    document.getElementById('intentos-modal').textContent = this.contador;
+    document.getElementById('modalOverlay').classList.add('show');
+    document.getElementById('victoryModal').classList.add('show');
   },
 
   resetGame: function() {
-    const modalOverlay = document.getElementById('modalOverlay');
-    const victoryModal = document.getElementById('victoryModal');
-    if (modalOverlay) modalOverlay.remove();
-    if (victoryModal) victoryModal.remove();
+    document.getElementById('modalOverlay').classList.remove('show');
+    document.getElementById('victoryModal').classList.remove('show');
     
     this.contador = 0;
     this.spanContador.textContent = '0';
